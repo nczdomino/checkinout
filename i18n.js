@@ -9,7 +9,7 @@
   function collect(root){
     var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
       var p=n.parentNode;
-      if(!p||/^(SCRIPT|STYLE|NOSCRIPT)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;
+      if(!p||/^(SCRIPT|STYLE|NOSCRIPT|SELECT|OPTION)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;
       return norm(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
     var n;while((n=w.nextNode())){if(!rec.has(n)){rec.set(n,{src:n.nodeValue,out:n.nodeValue});nodes.push(n);}}
   }
