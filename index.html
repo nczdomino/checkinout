@@ -1,37 +1,681 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>furuCRM - Check In/Check Out</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>furuCRM</h1>
-        <h2>ROOM 803</h2>
-      </div>
-      <p id="clock">12:06</p>
-      <div class="name-input">
-        <label for="employeeName">Tên nhân viên:</label>
-        <select id="employeeName">
-          <option value="">Vui lòng chọn</option>
-          <option value="employeeA">Nhân viên A</option>
-          <option value="employeeB">Nhân viên B</option>
-          <option value="employeeC">Nhân viên C</option>
-        </select>
-      </div>
-      <div class="buttons">
-        <button class="check-in">CHECK IN</button>
-        <button class="check-out">CHECK OUT</button>
-      </div>
-      <div class="popup" id="popup">
-        <p id="popup-message"></p>
-        <button id="close-popup">Đóng</button>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1f4d">
+<title>Đại học Thâm Quyến Tokyo Campus – Cẩm nang tuyển sinh</title>
+<meta name="description" content="Thông tin tuyển sinh Đại học Thâm Quyến Tokyo Campus: chương trình học, học phí, thi đầu vào, học bổng và liên kết hữu ích.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-in">
+    <a href="#home" class="brand">
+      <div class="logo">深</div>
+      <span>SZU Tokyo<small>Đại học Thâm Quyến · Tokyo Campus</small></span>
+    </a>
+    <nav class="links" id="links" aria-label="Điều hướng chính">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#chuyen-nganh">Chuyên ngành</a>
+      <a href="#truong-chinh">Trường chính</a>
+      <a href="#hoc-phi">Học phí</a>
+      <a href="#thi-dau-vao">Thi đầu vào</a>
+      <a href="#xet-tuyen">Xét tuyển 2027</a>
+      <a href="#hoc-bong">Học bổng</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" id="lang"></div>
+      <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="badge reveal"><span class="dot"></span> Tuyển sinh 2 kỳ: Tháng 4 &amp; Tháng 10</span>
+      <h1 class="reveal d1">Đại học Thâm Quyến<br><em>Tokyo Campus</em></h1>
+      <div class="cn reveal d2">深圳大学東京校 · 汉语言文学（商务方向）</div>
+      <p class="sub reveal d3">Học tiếng Trung thương mại ngay giữa Tokyo và nhận bằng đại học chính quy 100% do cơ sở chính tại Trung Quốc cấp.</p>
+      <div class="cta reveal d4">
+        <a href="#hoc-bong" class="btn primary">Xem học bổng 🎁</a>
+        <a href="#hoc-phi" class="btn ghost">Tính học phí 💴</a>
       </div>
     </div>
-    <script src="script.js"></script>
-    <script src="validation.js"></script>
-  </body>
+    <aside class="hero-card reveal d2">
+      <h3>Thông tin nhanh</h3>
+      <div class="fact"><div class="ic">🎓</div><div><b>Bằng chính quy 100%</b><span>Do Đại học Thâm Quyến (Trung Quốc) cấp</span></div></div>
+      <div class="fact"><div class="ic">🇯🇵</div><div><b>Yêu cầu tiếng Nhật ≈ N3+</b><span>Có chứng chỉ thì càng tốt</span></div></div>
+      <div class="fact"><div class="ic">🛂</div><div><b>Nhận mọi loại visa</b><span>Trừ visa thực tập sinh</span></div></div>
+      <div class="fact"><div class="ic">🚉</div><div><b>Ga Yotsuya · 2–3 phút đi bộ</b><span>四ツ谷駅 – di chuyển cực tiện</span></div></div>
+    </aside>
+  </div>
+  <div class="scroll-hint">Cuộn xuống<i></i></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><div class="num"><span data-count="4">0</span><small>năm</small></div><p>Chương trình đại học</p></div>
+      <div class="stat"><div class="num"><span data-count="100">0</span><small>%</small></div><p>Bằng chính quy</p></div>
+      <div class="stat"><div class="num"><span data-count="2">0</span><small>kỳ/năm</small></div><p>Tuyển sinh tháng 4 &amp; 10</p></div>
+      <div class="stat"><div class="num"><span data-count="3">0</span><small>tuyến</small></div><p>Tàu qua ga Yotsuya (JR, Marunouchi, Namboku)</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="ja-note" id="langNote" hidden><div class="container"></div></div>
+<section id="gioi-thieu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Giới thiệu <span class="ja">/ 学校紹介</span></span>
+      <h2 class="title">Chuyên ngành duy nhất, định hướng thật rõ</h2>
+      <p class="lead">Tập trung vào tiếng Trung thương mại, kết hợp kiến thức kinh doanh và công nghệ để sẵn sàng làm việc tại doanh nghiệp Nhật – Trung.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-main reveal">
+        <h3>Tiếng Trung hướng thương mại</h3>
+        <div class="cn">汉语言文学（商务方向） / Business Chinese</div>
+        <p>Bằng đại học là bằng chính quy 100% do cơ sở chính ở Trung Quốc cấp. Ngoài tiếng Trung thương mại, sinh viên còn được học thêm nhiều mảng kiến thức thực tế.</p>
+        <div class="chips">
+          <span class="chip">📈 Kinh doanh</span>
+          <span class="chip">🌐 Thương mại quốc tế</span>
+          <span class="chip">💻 IT – Công nghệ</span>
+          <span class="chip">🤝 Kỹ năng doanh nghiệp thực tế</span>
+        </div>
+      </div>
+      <div class="card reveal d1">
+        <h3>Điều kiện &amp; lưu ý đầu vào</h3>
+        <ul class="checklist">
+          <li><span>Yêu cầu tiếng Nhật khoảng <b>N3 trở lên</b> (có chứng chỉ thì tốt).</span></li>
+          <li><span>Biết tiếng Trung được ưu tiên, có thể thi theo hình thức khác.</span></li>
+          <li><span>Tỷ lệ chuyên cần (<b>seki</b>) càng cao càng tốt.</span></li>
+          <li><span>Trường nhận các loại visa, <b>trừ thực tập sinh</b>.</span></li>
+          <li><span>Tuyển sinh <b>tháng 4</b> và <b>tháng 10</b> (tháng 10 yêu cầu biết tiếng Trung).</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="chuyen-nganh" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Chuyên ngành <span class="ja">/ 学べる分野</span></span>
+      <h2 class="title">1 chuyên ngành chính + 2 chuyên ngành phụ</h2>
+      <p class="lead">Học tiếng Trung thương mại làm trục chính, mở rộng thêm kinh doanh hoặc công nghệ thông tin. Bấm vào thẻ để xem giáo trình chi tiết trên website trường.</p>
+    </div>
+    <div class="major-grid">
+      <a class="major-card main reveal" href="https://szu-tokyo.jp/carriculum/#chinese" target="_blank" rel="noopener">
+        <span class="tag">Chuyên ngành chính <span class="ja">/ 主専攻</span></span>
+        <h3>Tiếng Trung thương mại</h3>
+        <div class="ja-name">ビジネス中国語</div>
+        <span class="go">Xem giáo trình ›</span>
+      </a>
+      <a class="major-card reveal d1" href="https://szu-tokyo.jp/carriculum/#management" target="_blank" rel="noopener">
+        <span class="tag">Chuyên ngành phụ <span class="ja">/ 副専攻</span></span>
+        <h3>Quản trị kinh doanh</h3>
+        <div class="ja-name">経営学</div>
+        <span class="go">Xem giáo trình ›</span>
+      </a>
+      <a class="major-card reveal d2" href="https://szu-tokyo.jp/carriculum/#it" target="_blank" rel="noopener">
+        <span class="tag">Chuyên ngành phụ <span class="ja">/ 副専攻</span></span>
+        <h3>Truyền thông &amp; Công nghệ thông tin</h3>
+        <div class="ja-name">情報コミュニケーション学</div>
+        <span class="go">Xem giáo trình ›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section id="truong-chinh" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Trường chính <span class="ja">/ 深圳大学 本校</span></span>
+      <h2 class="title">Đại học Thâm Quyến: trường công lập ngay giữa thành phố đổi mới sáng tạo</h2>
+      <p class="lead">SZU Tokyo đào tạo theo chương trình của Đại học Thâm Quyến (深圳大学) ở Trung Quốc. Bằng cấp là bằng chính quy do cơ sở chính cấp.</p>
+    </div>
+    <div class="facts reveal">
+      <div><b>1983</b><span>Năm thành lập</span></div>
+      <div><b>2</b><span>Cơ sở: Việt Hải &amp; Lệ Hồ</span></div>
+      <div><b>2,72 km²</b><span>Tổng diện tích</span></div>
+      <div><b>~35.000</b><span>Sinh viên</span></div>
+    </div>
+    <p class="loc reveal">Vị trí: quận Nam Sơn (南山区), Thâm Quyến, Quảng Đông, Trung Quốc</p>
+
+    <h3 class="rank-title reveal"><span>Xếp hạng thế giới</span> <small>Cập nhật: 06/10/2026</small></h3>
+    <!-- Cập nhật số liệu: sửa trực tiếp 4 thẻ .rank-card bên dưới và ngày ở trên -->
+    <div class="rank-grid reveal">
+      <div class="rank-card"><small>QS 2027</small><b>=416</b><p>Hạng 27 trong các đại học nội địa Trung Quốc, tăng 36 bậc</p></div>
+      <div class="rank-card"><small>THE 2027</small><b>351–375</b><p>Công bố ngày 30/9/2026</p></div>
+      <div class="rank-card"><small>US News 2026</small><b>=156</b><p>Best Global Universities</p></div>
+      <div class="rank-card"><small>ARWU 2025</small><b>201–300</b><p>Bảng xếp hạng Thượng Hải (ShanghaiRanking)</p></div>
+    </div>
+    <div class="chips reveal" style="margin-top:16px">
+      <span class="chip">🔬 Hóa lý: hạng 9 thế giới (US News)</span>
+      <span class="chip">⚛️ Khoa học nano: hạng 10 thế giới (US News)</span>
+    </div>
+    <p class="src reveal"><span>Xem bảng xếp hạng mới nhất tại trang chính thức:</span>
+      <a href="https://www.topuniversities.com/world-university-rankings" target="_blank" rel="noopener">QS</a> ·
+      <a href="https://www.timeshighereducation.com/world-university-rankings" target="_blank" rel="noopener">THE</a> ·
+      <a href="https://www.usnews.com/education/best-global-universities" target="_blank" rel="noopener">US News</a> ·
+      <a href="https://www.shanghairanking.com/rankings/arwu" target="_blank" rel="noopener">ARWU</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="card reveal">
+      <h3>🏛️ Thông tin chính thức của trường</h3>
+      <div class="info-grid">
+        <div class="info-item"><small>Tên trường</small><b>深圳大学東京学院</b><br><span style="font-size:.84rem;color:var(--muted)">Tên thường gọi: 深圳大学東京校</span></div>
+        <div class="info-item"><small>Khoa</small><b>Khoa Tiếng Trung (中国語学部)</b></div>
+        <div class="info-item"><small>Ngành</small><b>Tiếng Trung thương mại (ビジネス中国語学科)</b></div>
+        <div class="info-item"><small>Ngành phụ</small><b>Quản trị kinh doanh (Đổi mới &amp; Khởi nghiệp)</b><br><b>Truyền thông thông tin (Công nghệ ứng dụng Mobile Internet)</b></div>
+        <div class="info-item"><small>Địa chỉ</small><b>〒160-0004 Tokyo, Shinjuku-ku, Yotsuya 1-22-5, tầng 3</b><br><span style="font-size:.84rem;color:var(--muted)">Cách ga Yotsuya khoảng 3 phút đi bộ (JR Chuo, Marunouchi, Namboku)</span></div>
+        <div class="info-item"><small>Liên hệ</small><b><a href="tel:0363842207">☎ 03-6384-2207</a></b> · FAX 03-6384-2208<br><b><a href="mailto:info-szu@szu-tokyo.jp">✉ info-szu@szu-tokyo.jp</a></b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="lo-trinh" style="background:#fff">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lộ trình học 4 năm <span class="ja">/ 4年間のカリキュラム</span></span>
+      <h2 class="title">Từ nền tảng đến thực hành doanh nghiệp</h2>
+      <p class="lead">Chọn từng năm để xem các môn học chính. Ngoài môn bắt buộc còn có nhiều môn tự chọn khác.</p>
+    </div>
+    <div class="tabs reveal" role="tablist" id="yearTabs">
+      <button class="tab active" role="tab" data-t="y1">Năm 1 · Nền tảng</button>
+      <button class="tab" role="tab" data-t="y2">Năm 2 · Nâng cao</button>
+      <button class="tab" role="tab" data-t="y3">Năm 3 · Thương mại</button>
+      <button class="tab" role="tab" data-t="y4">Năm 4 · Thực hành</button>
+    </div>
+
+    <div class="panel active" id="y1">
+      <div class="panel-grid">
+        <div class="year-badge"><div class="big">01</div><div><h3>Nền tảng</h3><p>Xây chắc 4 kỹ năng tiếng Trung và hiểu bối cảnh văn hóa – kinh tế.</p></div></div>
+        <div class="subjects">
+          <div class="subject"><i>1</i>Tiếng Trung cơ bản 4 kỹ năng</div>
+          <div class="subject"><i>2</i>Văn hóa Nhật – Trung</div>
+          <div class="subject"><i>3</i>Kinh tế Greater Bay Area</div>
+          <div class="subject"><i>4</i>Tiếng Anh</div>
+          <div class="subject elective"><i>＋</i>Tự chọn: Tiếng Anh thương mại, Thiết kế sự nghiệp và các môn khác</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="y2">
+      <div class="panel-grid">
+        <div class="year-badge"><div class="big">02</div><div><h3>Nâng cao</h3><p>Nâng trình tiếng Trung lên trung cấp, đào sâu Hán tự và ngữ pháp.</p></div></div>
+        <div class="subjects">
+          <div class="subject"><i>1</i>Tiếng Trung trung cấp</div>
+          <div class="subject"><i>2</i>Văn hóa trà Trung Quốc</div>
+          <div class="subject"><i>3</i>Hán tự &amp; giải thích chữ Hán</div>
+          <div class="subject"><i>4</i>Ngữ pháp nâng cao</div>
+          <div class="subject"><i>5</i>Giới thiệu Thâm Quyến</div>
+          <div class="subject elective"><i>＋</i>Tự chọn: Tiếng Anh thương mại, tiếng Quảng Đông, từ vựng &amp; ngữ pháp khó và các môn khác</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="y3">
+      <div class="panel-grid">
+        <div class="year-badge"><div class="big">03</div><div><h3>Thương mại</h3><p>Chuyên sâu tiếng Trung thương mại, đàm phán và pháp luật.</p></div></div>
+        <div class="subjects">
+          <div class="subject"><i>1</i>Tiếng Trung thương mại</div>
+          <div class="subject"><i>2</i>Nghe nói thương mại</div>
+          <div class="subject"><i>3</i>Đọc hiểu tài liệu kinh doanh</div>
+          <div class="subject"><i>4</i>Đàm phán thương mại quốc tế</div>
+          <div class="subject"><i>5</i>Báo chí kinh tế</div>
+          <div class="subject"><i>6</i>Luật pháp Trung Quốc</div>
+          <div class="subject"><i>7</i>Hướng dẫn luận văn</div>
+          <div class="subject"><i>8</i>Tổng quan về Trung Quốc</div>
+          <div class="subject"><i>9</i>Đọc hiểu kinh tế Trung Quốc</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="y4">
+      <div class="panel-grid">
+        <div class="year-badge"><div class="big">04</div><div><h3>Thực hành</h3><p>Hoàn thiện luận văn và thực tập tại doanh nghiệp.</p></div></div>
+        <div class="subjects">
+          <div class="subject"><i>1</i>Hội thoại thương mại nâng cao</div>
+          <div class="subject"><i>2</i>Nghiệp vụ thương mại quốc tế</div>
+          <div class="subject"><i>3</i>Làm luận văn</div>
+          <div class="subject"><i>4</i>Thực tập doanh nghiệp</div>
+          <div class="subject"><i>5</i>Tư vấn luận văn</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDITS -->
+<section id="tin-chi" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Học chế &amp; bằng cấp <span class="ja">/ 学制・学位</span></span>
+      <h2 class="title">Thời gian học, tín chỉ và văn bằng</h2>
+    </div>
+    <div class="grid-4 reveal" style="margin-bottom:22px">
+      <div class="card"><div class="ic">📆</div><h3>4 năm</h3><p>Thời gian học tiêu chuẩn.</p></div>
+      <div class="card"><div class="ic">⏳</div><h3>Tối đa 8 năm</h3><p>Thời gian được phép theo học.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Tối thiểu 2 năm</h3><p>Có thể tốt nghiệp sớm nếu đáp ứng điều kiện chuyển tiếp / nhảy cấp của trường.</p></div>
+      <div class="card"><div class="ic">🎓</div><h3>Cử nhân Văn học</h3><p>学士（文学）</p></div>
+    </div>
+    <div class="tuition-wrap">
+      <div class="card reveal">
+        <h3>📚 Tín chỉ cần để tốt nghiệp</h3>
+        <p style="margin-bottom:10px">Tổng cộng <b style="color:var(--red)"><span data-count="153">0</span> tín chỉ</b>.</p>
+        <div class="credit-row"><span>Môn cơ bản bắt buộc</span><div class="track"><i style="width:100%"></i></div><b>74</b></div>
+        <div class="credit-row"><span>Chuyên ngành bắt buộc</span><div class="track"><i style="width:56.8%"></i></div><b>42</b></div>
+        <div class="credit-row"><span>Chuyên ngành tự chọn</span><div class="track"><i style="width:18.9%"></i></div><b>14</b></div>
+        <div class="credit-row"><span>Giáo dục đại cương</span><div class="track"><i style="width:14.9%"></i></div><b>11</b></div>
+        <div class="credit-row"><span>Thực tiễn xã hội</span><div class="track"><i style="width:2.7%"></i></div><b>2</b></div>
+        <div class="credit-row"><span>Thực tập doanh nghiệp</span><div class="track"><i style="width:2.7%"></i></div><b>2</b></div>
+        <div class="credit-row"><span>Luận văn tốt nghiệp</span><div class="track"><i style="width:10.8%"></i></div><b>8</b></div>
+        <div class="credit-row total"><span>Tổng</span><span></span><b>153</b></div>
+        <div class="tiny">Tín chỉ của ngành phụ (Quản trị kinh doanh, Truyền thông thông tin) nằm trong nhóm môn liên quan chuyên ngành.</div>
+      </div>
+      <div class="reveal d1" style="display:grid;gap:20px">
+        <div class="card">
+          <h3>🏅 Văn bằng nhận được</h3>
+          <p>Sinh viên đủ tín chỉ quy định được Đại học Thâm Quyến cơ sở chính cấp <b>bằng tốt nghiệp và bằng học vị</b> được Bộ Giáo dục Trung Quốc công nhận. Người hoàn thành ngành phụ còn nhận thêm <b>giấy chứng nhận hoàn thành</b> riêng.</p>
+        </div>
+        <div class="card">
+          <h3>⏩ Chuyển tiếp / nhảy cấp</h3>
+          <p>Nếu đáp ứng điều kiện của trường, bạn có thể tốt nghiệp sớm nhất sau 2 năm. Hãy trao đổi trực tiếp tại Open Campus hoặc buổi phỏng vấn tư vấn riêng.</p>
+          <a class="btn dark" style="margin-top:14px" href="https://szu-tokyo.jp/contact/" target="_blank" rel="noopener">📕 Đăng ký Open Campus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUITION -->
+<section id="hoc-phi">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Học phí chi tiết <span class="ja">/ 学費</span></span>
+      <h2 class="title">Minh bạch từng khoản phí</h2>
+      <p class="lead">Đơn vị: yên Nhật (¥). Học phí có thể chia thành 2 lần đóng mỗi năm, tương ứng 2 học kỳ.</p>
+    </div>
+    <div class="tuition-wrap">
+      <div class="table-card reveal">
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Khoản phí</th><th>Năm 1</th><th>Năm 2–4 (mỗi năm)</th></tr></thead>
+            <tbody>
+              <tr><td>Phí nhập học</td><td>150,000¥</td><td class="dash">—</td></tr>
+              <tr><td>Học phí</td><td>880,000¥</td><td>880,000¥</td></tr>
+              <tr><td>Phí cơ sở vật chất</td><td>110,000¥</td><td>110,000¥</td></tr>
+              <tr><td>Phí giáo dục bổ sung</td><td>150,000¥</td><td>150,000¥</td></tr>
+              <tr><td>Phí hoạt động + hội học sinh</td><td>40,000¥</td><td>40,000¥</td></tr>
+              <tr><td>Giáo trình</td><td>40,000¥</td><td>40,000¥</td></tr>
+            </tbody>
+            <tfoot><tr><td>Tổng</td><td>1,370,000¥</td><td>1,220,000¥</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="total-card">
+          <div class="label">Tổng khoảng 4 năm</div>
+          <div class="amount"><span data-count="5030000" data-format="1">0</span>¥</div>
+          <div class="sub">≈ 503 man</div>
+          <div class="bars" id="bars">
+            <div class="bar-row"><span>Năm 1</span><div class="bar"><i data-w="27.2"></i></div><b>1,370,000</b></div>
+            <div class="bar-row"><span>Năm 2</span><div class="bar"><i data-w="24.3"></i></div><b>1,220,000</b></div>
+            <div class="bar-row"><span>Năm 3</span><div class="bar"><i data-w="24.3"></i></div><b>1,220,000</b></div>
+            <div class="bar-row"><span>Năm 4</span><div class="bar"><i data-w="24.3"></i></div><b>1,220,000</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:22px">
+      <div class="card reveal"><div class="ic">💳</div><h3>Chia 2 lần đóng</h3><p>1 năm có 2 học kỳ nên học phí được chia đôi, đóng thành 2 lần.</p></div>
+      <div class="card reveal d1"><div class="ic">⏩</div><h3>Nhảy cấp tiết kiệm</h3><p>Có HSK5+ có thể thi nhảy cấp lên năm 2 hoặc năm 3 để tiết kiệm thời gian và học phí.</p></div>
+      <div class="card reveal d2"><div class="ic">📝</div><h3>Phí xét tín chỉ</h3><p>Người nhảy cấp / chuyển trường / nhập học tháng 10: <b>20,000¥ / 1 môn</b>.</p></div>
+    </div>
+    <div class="note reveal"><span>🧾</span><div><b>Lệ phí thi đầu vào: 35,000¥.</b> Có giấy tiến cử + JLPT N3 có thể được giảm một nửa.</div></div>
+
+    <!-- calculator -->
+    <div class="calc reveal">
+      <h3>🧮 Ước tính chi phí năm 1</h3>
+      <p>Chọn chứng chỉ ngoại ngữ để xem mức học bổng ngoại ngữ tương ứng (xét lúc nhập học). Chỉ mang tính tham khảo.</p>
+      <div class="calc-grid">
+        <div>
+          <label class="f" for="cert">Chứng chỉ ngoại ngữ (còn hiệu lực)</label>
+          <select id="cert">
+            <option value="0">Chưa có chứng chỉ</option>
+            <option value="60000">HSK4 / JLPT N3 / Eiken 2級</option>
+            <option value="120000">HSK5 / JLPT N2 / Eiken 準1級</option>
+            <option value="240000">HSK6 (240+) / JLPT N1 / Eiken 1級</option>
+          </select>
+          <label class="switch"><input type="checkbox" id="newbie"><span class="tr"></span>Tính thêm học bổng tân sinh viên 150,000¥ (nếu được xét)</label>
+        </div>
+        <div class="result" aria-live="polite">
+          <div class="row"><span>Tổng chi phí năm 1</span><b>1,370,000¥</b></div>
+          <div class="row minus"><span>Học bổng ngoại ngữ</span><b id="rCert">− 0¥</b></div>
+          <div class="row minus"><span>Học bổng tân sinh viên</span><b id="rNew">− 0¥</b></div>
+          <div class="row sum"><span>Ước tính còn lại</span><b id="rTotal">1,370,000¥</b></div>
+          <div class="tiny">Học bổng do trường xét duyệt, không phải khoản được đảm bảo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAM -->
+<section id="thi-dau-vao" style="background:#fff">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Thi đầu vào <span class="ja">/ 入学試験</span></span>
+      <h2 class="title">Hai hình thức thi, tùy trình độ tiếng Trung</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card exam-card reveal">
+        <span class="tag">Chưa biết tiếng Trung</span>
+        <div class="ic">👶</div>
+        <h3>Thi dành cho người mới</h3>
+        <ul class="steps">
+          <li><div>Phỏng vấn<small>10 phút</small></div></li>
+          <li><div>Viết luận<small>60 phút · có thể thi bằng tiếng Việt</small></div></li>
+        </ul>
+      </div>
+      <div class="card exam-card reveal d1">
+        <span class="tag">Từ HSK4</span>
+        <div class="ic">👨‍🎓</div>
+        <h3>Thi dành cho người có tiếng Trung</h3>
+        <ul class="steps">
+          <li><div>Phỏng vấn<small>10 phút</small></div></li>
+          <li><div>Thi viết tiếng Trung<small>60 phút</small></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note blue reveal"><span>🚀</span><div>Biết tiếng Trung có thể thi nhảy cấp để <b>học thẳng năm 2 hoặc năm 3</b> đại học.</div></div>
+
+    <div class="exchange reveal" style="margin-top:44px">
+      <div>
+        <span class="eyebrow" style="color:var(--gold)">Du học ngắn hạn</span>
+        <h3>Trao đổi tại cơ sở chính ở Trung Quốc</h3>
+        <p>Từ năm 2, sinh viên có thể đăng ký đi trao đổi tại Đại học Thâm Quyến cơ sở chính, trong 1 học kỳ hoặc 1 năm. Trong thời gian đó học phí vẫn đóng bên Nhật như bình thường.</p>
+      </div>
+      <div class="route">
+        <div class="node"><b>Tokyo</b><span>Năm 1</span></div>
+        <div class="arrow">➜</div>
+        <div class="node"><b>Thâm Quyến</b><span>1 kỳ hoặc 1 năm</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS 2027 -->
+<section id="xet-tuyen">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tuyển sinh khóa 2027 <span class="ja">/ 2027年度募集 出願案内</span></span>
+      <h2 class="title">Điều kiện, hình thức xét tuyển &amp; cách nộp hồ sơ</h2>
+      <p class="lead">Tóm tắt từ hướng dẫn tuyển sinh chính thức năm 2027. Học sinh nước ngoài nên đọc kỹ tab "Lưu học sinh" và tài liệu tiếng Việt của trường.</p>
+    </div>
+
+    <div class="card reveal" style="margin-bottom:22px">
+      <h3>🎯 Trường mong muốn tìm kiếm những bạn…</h3>
+      <ul class="checklist">
+        <li><span>Muốn thành thạo tiếng Trung thương mại để hoạt động toàn cầu trong các lĩnh vực như thương mại, du lịch, sản xuất, khởi nghiệp, IT.</span></li>
+        <li><span>Quan tâm đến Thâm Quyến và Đại học Thâm Quyến, nơi tiêu biểu cho tinh thần khởi nghiệp, thực hành và hướng ra toàn cầu.</span></li>
+        <li><span>Có hiểu biết cơ bản về văn hóa, kinh tế Trung Quốc và mong muốn tìm hiểu học thuật sâu hơn.</span></li>
+      </ul>
+    </div>
+
+    <div class="tabs reveal" role="tablist" id="admTabs">
+      <button class="tab active" data-t="a1">Điều kiện</button>
+      <button class="tab" data-t="a2">Lưu học sinh</button>
+      <button class="tab" data-t="a3">Hình thức xét tuyển</button>
+      <button class="tab" data-t="a4">Nộp hồ sơ</button>
+    </div>
+
+    <div class="adm-panel active" id="a1" style="margin-top:26px">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Điều kiện chung</h3>
+          <p>Dành cho người có quốc tịch Nhật, hoặc quốc tịch nước ngoài khác Trung Quốc (kể cả Hồng Kông, Macao, Đài Loan). Cần thuộc một trong các trường hợp:</p>
+          <ul class="checklist">
+            <li><span>Đã tốt nghiệp THPT, hoặc dự kiến tốt nghiệp tháng 3/2027.</span></li>
+            <li><span>Hoàn thành 12 năm giáo dục phổ thông, hoặc dự kiến hoàn thành tháng 3/2027.</span></li>
+            <li><span>Đã/sắp hoàn thành khóa cao đẳng nghề (senmon) có quyền vào đại học.</span></li>
+            <li><span>Đỗ kỳ thi tương đương tốt nghiệp THPT của Bộ Giáo dục Nhật.</span></li>
+            <li><span>Hoàn thành/dự kiến hoàn thành 12 năm phổ thông ở nước ngoài.</span></li>
+            <li><span>Có IB, Abitur hoặc GCE A-level.</span></li>
+            <li><span>Được trường công nhận có học lực tương đương.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Với bạn có liên hệ với Trung Quốc</h3>
+          <p>Nếu cha hoặc mẹ có quốc tịch Trung Quốc, cần nộp thêm hồ sơ bổ sung (xem tab "Nộp hồ sơ").</p>
+          <div class="note blue" style="margin-top:18px"><span>ℹ️</span><div>Tuyển sinh theo 4 hình thức: <b>Xét tuyển tổng hợp</b>, <b>Tiến cử của trường</b> (chỉ định / công mộ), <b>Thi tuyển thông thường</b> và <b>Lưu học sinh</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="adm-panel" id="a2" style="margin-top:26px">
+      <div class="card">
+        <h3>🌏 Dành cho lưu học sinh nước ngoài</h3>
+        <p>Cần đọc thêm tài liệu "Yêu cầu tuyển chọn lưu học sinh" riêng của trường. Bạn đủ điều kiện nếu thuộc điều kiện chung, hoặc thuộc một trong các trường hợp sau:</p>
+        <ul class="checklist">
+          <li><span>Đã hoàn thành/dự kiến hoàn thành <b>12 năm giáo dục phổ thông</b> ở nước ngoài. Nếu chương trình dưới 12 năm, cần hoàn thành thêm khóa dự bị.</span></li>
+          <li><span>Đã học <b>từ 1 năm trở lên</b> tại trường Nhật ngữ được Bộ trưởng Tư pháp công nhận với tư cách lưu trú "Du học", <b>hoặc</b> có năng lực tiếng Nhật tương đương <b>N2</b>.</span></li>
+        </ul>
+        <div class="note"><span>📞</span><div>Nếu muốn xin tiến cử từ trường Nhật ngữ, chuyển tiếp hoặc nhảy cấp, hãy liên hệ trực tiếp với trường qua <b>03-6384-2207</b> hoặc <b>info-szu@szu-tokyo.jp</b>.</div></div>
+      </div>
+    </div>
+
+    <div class="adm-panel" id="a3" style="margin-top:26px">
+      <div class="grid-2">
+        <div class="card type-card">
+          <div class="tagline">Xét tuyển tổng hợp</div>
+          <h3>📖 Có xét hồ sơ + bài thi + phỏng vấn</h3>
+          <div class="mini-title">Chưa học tiếng Trung</div>
+          <ul class="mini-list"><li>Xét hồ sơ</li><li>Viết luận 60 phút (600–800 chữ), chọn 1 trong 5 nhóm chủ đề</li><li>Phỏng vấn khoảng 10 phút (tự giới thiệu bằng tiếng Nhật)</li></ul>
+          <div class="chips light" style="margin-top:12px">
+            <span class="chip">Nhân lực toàn cầu</span><span class="chip">Xã hội, giáo dục, việc làm thời AI</span><span class="chip">Giáo dục ngoại ngữ</span><span class="chip">Đô thị quốc tế như Thâm Quyến</span><span class="chip">Đô thị đổi mới</span>
+          </div>
+          <div class="mini-title">Đã học tiếng Trung</div>
+          <ul class="mini-list"><li>Xét hồ sơ</li><li>Thi viết 60 phút: đọc hiểu và viết luận. <b>Miễn thi</b> nếu có HSK4 hoặc Trung kiểm (中検) 3 級</li><li>Phỏng vấn khoảng 10 phút (tự giới thiệu bằng tiếng Trung)</li></ul>
+          <div class="note" style="margin-top:16px"><span>➕</span><div>Được <b>cộng điểm (tối đa 50)</b> nếu có chứng chỉ (kiểm định chuyên ngành, Hán tự, Eiken…), báo cáo hoạt động nghiên cứu, hoạt động tình nguyện hoặc ngoại khóa.</div></div>
+        </div>
+
+        <div style="display:grid;gap:20px;align-content:start">
+          <div class="card type-card">
+            <div class="tagline">Tiến cử của trường (chỉ định / công mộ)</div>
+            <h3>🏫 Xét hồ sơ + phỏng vấn</h3>
+            <ul class="mini-list"><li>Chưa học tiếng Trung: xét hồ sơ, phỏng vấn khoảng 10 phút (tiếng Nhật)</li><li>Đã học tiếng Trung: xét hồ sơ, phỏng vấn khoảng 10 phút (tiếng Trung). Từ HSK4 trở lên thường được tính là người đã học</li></ul>
+            <div class="mini-title">Điều kiện</div>
+            <ul class="mini-list">
+              <li>Có thư tiến cử của hiệu trưởng, trường là nguyện vọng 1 và cam kết nhập học nếu đỗ</li>
+              <li>Dự kiến tốt nghiệp THPT tháng 3/2027</li>
+              <li><b>Chỉ định:</b> điểm trung bình học tập từ <b>3.5</b> trở lên (sau cộng điểm), học tại trường được trường chỉ định</li>
+              <li><b>Công mộ:</b> điểm trung bình từ <b>3.8</b> trở lên (sau cộng điểm)</li>
+              <li>Có HSK4+, Trung kiểm 3 級+ hoặc Eiken 2 級+ được <b>cộng 0.2</b> vào điểm trung bình (chỉ cộng 1 mục)</li>
+            </ul>
+          </div>
+          <div class="card type-card">
+            <div class="tagline">Thi tuyển thông thường</div>
+            <h3>✏️ Xét hồ sơ + thi 2 môn</h3>
+            <p>Chọn 2 môn trong: Quốc ngữ (hiện đại, cổ văn), Toán (Toán I, A), Tin học I, Ngoại ngữ (Anh hoặc Trung). Mỗi môn 100 điểm, tổng 200 điểm.</p>
+            <ul class="mini-list"><li><b>Miễn môn ngoại ngữ</b> nếu có Eiken CSE 2100+, TOEFL iBT 60+, TOEIC 650+, HSK4 hoặc Trung kiểm 3 級</li><li>Biết hay chưa biết tiếng Trung không ảnh hưởng đến kết quả đậu rớt</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="note blue"><span>⏩</span><div>Người đã học tiếng Trung có thể được xét <b>chuyển tiếp hoặc nhảy cấp</b> tùy năng lực và kết quả thi. Hãy ghi rõ nguyện vọng trong form đăng ký online. Sau khi nhập học cần thi công nhận tín chỉ.</div></div>
+    </div>
+
+    <div class="adm-panel" id="a4" style="margin-top:26px">
+      <div class="grid-2">
+        <div class="card">
+          <h3>Bước 1 · Đăng ký online</h3>
+          <ul class="steps">
+            <li><div>Điền form đăng ký web<small>Gồm lý do ứng tuyển 200–300 chữ. Báo cáo hoạt động (tình nguyện, ngoại khóa, chứng chỉ) chỉ dành cho xét tuyển tổng hợp</small></div></li>
+            <li><div>Tải lên dữ liệu<small>Ảnh thẻ 1 tấm (4cm × 3cm, không đội mũ, chụp trong 3 tháng, nền trắng hoặc xanh); ảnh hoặc bản scan màu hộ chiếu; chứng chỉ tiếng Trung (không bắt buộc)</small></div></li>
+          </ul>
+          <div class="note blue"><span>✉️</span><div>Có thể tải lên khi đăng ký, hoặc gửi email trước kỳ thi tới <b>info-szu@szu-tokyo.jp</b>.</div></div>
+        </div>
+        <div class="card">
+          <h3>Bước 2 · Gửi hồ sơ qua bưu điện</h3>
+          <ul class="steps">
+            <li><div>Học bạ / bản đánh giá (調査書)<small>Không bóc niêm phong. Nếu có bản tiếng Anh thì gửi bản tiếng Anh. Thiếu ngày dự kiến tốt nghiệp thì cần thêm giấy chứng nhận dự kiến tốt nghiệp. Chưa có thì liên hệ trường</small></div></li>
+            <li><div>Thư tiến cử<small>Chỉ dành cho xét tuyển tiến cử: trường chỉ định do trường gửi đến cấp 3; công mộ tải mẫu từ website</small></div></li>
+          </ul>
+          <div class="addr"><b>Gửi đến:</b><br>〒160-0004 東京都新宿区四谷1-22-5 3F<br>深圳大学東京校 入試担当</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <h3>Hồ sơ bổ sung nếu cha hoặc mẹ có quốc tịch Trung Quốc</h3>
+        <ul class="checklist">
+          <li><span>Giấy tờ chứng minh sinh ra ngoài Trung Quốc, hoặc giấy tờ chính thức xác nhận đã hủy hộ khẩu / quốc tịch Trung Quốc.</span></li>
+          <li><span>Bản gốc trích lục hộ tịch (戸籍謄本).</span></li>
+          <li><span>Bản sao màu hoặc ảnh chụp lịch sử xuất nhập cảnh trong hộ chiếu 4 năm gần nhất.</span></li>
+          <li><span>Bản sao màu hoặc ảnh chụp thẻ lưu trú của cha/mẹ có quốc tịch Trung Quốc.</span></li>
+        </ul>
+      </div>
+      <div class="note"><span>📞</span><div>Sau khi xét hồ sơ, trường sẽ liên hệ qua điện thoại hoặc email để báo kết quả sơ tuyển, lịch thi và việc nộp lệ phí xét tuyển. Lịch tuyển sinh chi tiết (đợt nhập học tháng 10/2026 và tháng 4/2027) xem tại <a href="https://szu-tokyo.jp/vi/huong-dan-va-tai-lieu-can-thiet-de-nop-don-danh-cho-sinh-vien-quoc-te/" target="_blank" rel="noopener" style="color:inherit;font-weight:700">tài liệu tiếng Việt của trường</a>.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOLARSHIP -->
+<section id="hoc-bong" class="sch-bg">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Học bổng chi tiết <span class="ja">/ 奨学金制度</span></span>
+      <h2 class="title">5 loại học bổng đồng hành cùng bạn</h2>
+      <p class="lead">Chọn từng loại để xem điều kiện và mức học bổng.</p>
+    </div>
+    <div class="tabs sch-tabs reveal" role="tablist" id="schTabs">
+      <button class="tab active" data-t="s1">🎁 Nhập học</button>
+      <button class="tab" data-t="s2">🎯 Ngoại ngữ</button>
+      <button class="tab" data-t="s3">📚 Thành tích</button>
+      <button class="tab" data-t="s4">🌐 Thực tiễn xã hội</button>
+      <button class="tab" data-t="s5">🏕️ Du học ngắn hạn</button>
+    </div>
+
+    <div class="sch-panel active" id="s1">
+      <div class="big-sch">
+        <div><div class="v">150,000¥</div><div style="opacity:.8;font-size:.9rem;margin-top:6px">Học bổng tân sinh viên</div></div>
+        <div>
+          <p>Trong mỗi đợt thi xét, sinh viên xuất sắc nhất đạt yêu cầu của trường sẽ được nhận học bổng này.</p>
+          <ul><li>Không cần đăng ký riêng, trường tự xét khi nhập học</li><li>Dành cho tân sinh viên có thành tích đầu vào xuất sắc và phẩm hạnh tốt</li><li>Ưu tiên người có chứng chỉ HSK hoặc được trường chỉ định tiến cử</li><li>Số lượng rất ít</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sch-panel" id="s2">
+      <div class="cert-list">
+        <div class="cert"><div class="m">🏆</div><div><h4>Cấp cao nhất</h4><div class="pills"><span class="pill">HSK6 (240+)</span><span class="pill">JLPT N1</span><span class="pill">Eiken 1級</span></div></div><div class="v">240,000¥</div></div>
+        <div class="cert"><div class="m">🥈</div><div><h4>Cấp trung – cao</h4><div class="pills"><span class="pill">HSK5</span><span class="pill">JLPT N2</span><span class="pill">Eiken 準1級</span></div></div><div class="v">120,000¥</div></div>
+        <div class="cert"><div class="m">🥉</div><div><h4>Cấp trung</h4><div class="pills"><span class="pill">HSK4</span><span class="pill">JLPT N3</span><span class="pill">Eiken 2級</span></div></div><div class="v">60,000¥</div></div>
+      </div>
+      <div class="note blue"><span>⭐</span><div><b>Điểm nổi bật:</b> sinh viên chứng minh được năng lực tiếng Trung bằng chứng chỉ HSK trước khi nhập học đều được nhận học bổng này.</div></div>
+      <div class="note"><span>⚠️</span><div><b>Cần nộp đơn đăng ký.</b> Chứng chỉ phải được cấp trong vòng <b>2 năm trước khi nhập học</b> và nộp bản chứng nhận đỗ trước khi nhập học. Nếu có nhiều chứng chỉ, trường lấy mức cao nhất làm chuẩn.</div></div>
+    </div>
+
+    <div class="sch-panel" id="s3">
+      <div class="note blue" style="margin:0 0 22px"><span>📌</span><div>Áp dụng từ <b>năm 2</b>, <b>cần nộp đơn</b>. Dành cho sinh viên xuất sắc, phẩm hạnh tốt, đạt tiêu chuẩn đánh giá của trường (số lượng có hạn). Mức tham khảo: <b>GPA tối thiểu 3.5/4.5</b> và tỷ lệ chuyên cần (seki) <b>từ 90% trở lên</b>.</div></div>
+      <div class="rank-grid">
+        <div class="rank first"><div class="medal">🥇</div><div class="name">Hạng nhất</div><div class="val">400,000¥</div></div>
+        <div class="rank"><div class="medal">🥈</div><div class="name">Hạng nhì</div><div class="val">200,000¥</div></div>
+        <div class="rank"><div class="medal">🥉</div><div class="name">Hạng ba</div><div class="val">100,000¥</div></div>
+      </div>
+      <div class="criteria"><strong>Xét dựa trên:</strong><span>Điểm số</span><span>Chuyên cần</span><span>Thái độ học tập</span><span>Thành tích tổng hợp</span></div>
+    </div>
+
+    <div class="sch-panel" id="s4">
+      <div class="note blue" style="margin:0 0 22px"><span>📌</span><div>Dành cho sinh viên <b>từ năm 2 trở lên</b>, <b>cần nộp đơn</b>: tích cực tham gia thực tiễn xã hội, phẩm hạnh tốt, đạt tiêu chuẩn đánh giá của trường.</div></div>
+      <div class="rank-grid">
+        <div class="rank first"><div class="medal">🥇</div><div class="name">Hạng nhất</div><div class="val">200,000¥</div></div>
+        <div class="rank"><div class="medal">🥈</div><div class="name">Hạng nhì</div><div class="val">120,000¥</div></div>
+        <div class="rank"><div class="medal">🥉</div><div class="name">Hạng ba</div><div class="val">60,000¥</div></div>
+      </div>
+      <div class="criteria"><strong>Xét dựa trên:</strong><span>Đóng góp cộng đồng</span><span>Nhiệt huyết</span><span>Học tập</span><span>Chuyên cần</span></div>
+    </div>
+
+    <div class="sch-panel" id="s5">
+      <div class="camp">
+        <div class="hero-camp">
+          <div class="big">2 <small>tuần</small></div>
+          <h3>Hỗ trợ du học ngắn hạn tại Trung Quốc</h3>
+          <p>Tổ chức tại Đại học Thâm Quyến cơ sở chính. Học tập, trải nghiệm và tham quan doanh nghiệp vừa và lớn tại Thâm Quyến.</p>
+        </div>
+        <div class="two-col-list">
+          <div class="card"><h3>✅ Trường hỗ trợ</h3>
+            <ul class="mini-list"><li>Khách sạn 🏨</li><li>Hoạt động trải nghiệm</li><li>Tham quan doanh nghiệp lớn tại Trung Quốc</li><li>Di chuyển trong Thâm Quyến</li><li>Và nhiều hoạt động khác</li></ul>
+          </div>
+          <div class="card"><h3>🎒 Sinh viên tự túc</h3>
+            <ul class="mini-list"><li>Vé máy bay</li><li>Visa</li><li>Chi phí cá nhân</li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="note"><span>⭐</span><div>Hình thức <b>miễn giảm chi phí</b> du học ngắn hạn (học phí, phí hoạt động). <b>Cần nộp đơn</b>, áp dụng từ năm 2 cho sinh viên tham gia chương trình ngắn hạn tại Đại học Thâm Quyến cơ sở chính, <b>không áp dụng với sinh viên nhảy cấp</b>. Số lượng có hạn, ưu tiên sinh viên có thành tích tốt.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section id="lien-ket">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Liên kết hữu ích <span class="ja">/ 関連リンク</span></span>
+      <h2 class="title">Tài liệu &amp; đăng ký</h2>
+      <p class="lead">Tất cả đường dẫn chính thức để bạn tìm hiểu và nộp hồ sơ.</p>
+    </div>
+    <div class="station reveal">
+      <div class="ic">🚉</div>
+      <div><b>Ga gần trường: 四ツ谷駅 (Yotsuya)</b><p>Đi bộ khoảng 2–3 phút · các tuyến JR Chuo, Marunouchi, Namboku</p></div>
+      <a class="btn dark" href="https://maps.app.goo.gl/qohgra6oDwr6JMuD9?g_st=ic" target="_blank" rel="noopener">🗺️ Mở Google Map</a>
+    </div>
+    <div class="link-grid">
+      <a class="linkcard reveal" href="https://szu-tokyo.jp/tuition/" target="_blank" rel="noopener"><div class="ic">📑</div><b>Học phí</b><span>Trang học phí chính thức</span></a>
+      <a class="linkcard reveal d1" href="https://szu-tokyo.jp/intl-student/" target="_blank" rel="noopener"><div class="ic">📂</div><b>Hồ sơ &amp; đề thi mẫu</b><span>Dành cho sinh viên quốc tế</span></a>
+      <a class="linkcard reveal d2" href="https://szu-tokyo.jp/vi/huong-dan-va-tai-lieu-can-thiet-de-nop-don-danh-cho-sinh-vien-quoc-te/" target="_blank" rel="noopener"><div class="ic">🇻🇳</div><b>Tài liệu tiếng Việt</b><span>Ngày thi, lịch và hướng dẫn nộp hồ sơ</span></a>
+      <a class="linkcard reveal" href="https://telemail.jp/slatepc/?des=115930&gsn=1159301&mh=y" target="_blank" rel="noopener"><div class="ic">🏠</div><b>Xin tài liệu gửi về nhà</b><span>Đăng ký nhận tài liệu qua đường bưu điện</span></a>
+      <a class="linkcard reveal d1" href="https://szu-tokyo.jp/contact/" target="_blank" rel="noopener"><div class="ic">📕</div><b>Đăng ký Open Campus</b><span>Đến trường tham quan và trao đổi trực tiếp</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div><b>深圳大学東京校</b> · Đại học Thâm Quyến Tokyo Campus<br>四ツ谷駅 (Yotsuya) – 2–3 phút đi bộ</div>
+      <div>Tuyển sinh tháng 4 &amp; tháng 10<br>☎ 03-6384-2207 · ✉ info-szu@szu-tokyo.jp</div>
+    </div>
+    <div class="disc">Thông tin trong trang chỉ mang tính tham khảo và có thể thay đổi. Vui lòng xác nhận lại học phí, học bổng và lịch thi trên website chính thức <a href="https://szu-tokyo.jp/" target="_blank" rel="noopener" style="color:#fff">szu-tokyo.jp</a> trước khi nộp hồ sơ.</div>
+  </div>
+</footer>
+
+<button id="top" aria-label="Lên đầu trang">↑</button>
+
+
+<script src="js/lang/ja.js" defer></script>
+<script src="js/lang/zh.js" defer></script>
+<script src="js/lang/zh-Hant.js" defer></script>
+<script src="js/lang/id.js" defer></script>
+<script src="js/lang/en.js" defer></script>
+<script src="js/lang/ko.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
 </html>
