@@ -1,7 +1,7 @@
 /* Chuyển ngôn ngữ: giữ nguyên HTML tiếng Việt, thay chữ theo từ điển trong js/lang/*.js */
 (function(){
   'use strict';
-  var LABEL={vi:'Tiếng Việt',ja:'日本語',zh:'简体中文','zh-Hant':'繁體中文',en:'English',ko:'한국어',ms:'Bahasa Melayu',ne:'नेपाली',th:'ไทย',id:'Bahasa Indonesia'};
+  var LABEL={vi:'🇻🇳 Tiếng Việt',ja:'🇯🇵 日本語',zh:'🇨🇳 简体中文','zh-Hant':'繁體中文',en:'🇬🇧 English',ko:'🇰🇷 한국어',ms:'🇲🇾 Bahasa Melayu',ne:'🇳🇵 नेपाली',th:'🇹🇭 ไทย',id:'🇮🇩 Bahasa Indonesia'};
   var D=window.I18N||{}, nodes=[], rec=new WeakMap(), cur='vi', busy=false, timer=0;
   var ORIG_TITLE=document.title, desc=document.querySelector('meta[name=description]');
   var norm=function(t){return t.replace(/\s+/g,' ').trim()};
@@ -9,7 +9,7 @@
   function collect(root){
     var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
       var p=n.parentNode;
-      if(!p||/^(SCRIPT|STYLE|NOSCRIPT|SELECT|OPTION)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;
+      if(!p||/^(SCRIPT|STYLE|NOSCRIPT)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;
       return norm(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
     var n;while((n=w.nextNode())){if(!rec.has(n)){rec.set(n,{src:n.nodeValue,out:n.nodeValue});nodes.push(n);}}
   }
@@ -45,7 +45,7 @@
     var box=document.getElementById('lang');if(!box)return;
     var sel=document.createElement('select');sel.id='langSel';sel.setAttribute('aria-label','Language / Ngôn ngữ / 言語');
     ['vi'].concat(Object.keys(D)).forEach(function(c){
-      if(!LABEL[c]||!(D[c]&&D[c].__ready))return;var o=document.createElement('option');o.value=c;o.textContent=LABEL[c];sel.appendChild(o);});
+      if(!LABEL[c]||(c!=='vi'&&!(D[c]&&D[c].__ready)))return;var o=document.createElement('option');o.value=c;o.textContent=LABEL[c];sel.appendChild(o);});
     sel.addEventListener('change',function(){apply(sel.value)});
     box.appendChild(sel);
   }
