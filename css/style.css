@@ -435,3 +435,21 @@ html[lang=ko] body{font-family:"Be Vietnam Pro","Apple SD Gothic Neo","Malgun Go
 html[lang=zh-Hant] body{font-family:"Be Vietnam Pro","PingFang TC","Microsoft JhengHei",sans-serif}
 html[lang=th] body{font-family:"Be Vietnam Pro","Sarabun","Leelawadee UI",Tahoma,sans-serif}
 html[lang=ne] body{font-family:"Be Vietnam Pro","Noto Sans Devanagari","Nirmala UI",Mangal,sans-serif}
+
+/* Bảng lịch tuyển sinh */
+.sched-lead{margin:6px 0 14px;color:var(--muted);font-size:.92rem}
+.sched-card .table-card{box-shadow:none}
+.sched{min-width:900px}
+.sched th,.sched td{padding:12px 12px;text-align:center;font-size:.86rem;vertical-align:middle;border-bottom:1px solid var(--line)}
+.sched thead th{text-transform:none;letter-spacing:0;font-size:.8rem;text-align:center}
+.sched td:not(:first-child){text-align:center;font-weight:500}
+.sched td.g{text-align:left;font-weight:800;color:var(--navy);background:#f8faff}
+.sched td.g small{display:block;font-weight:500;color:var(--muted);margin-top:4px;font-size:.78rem}
+.sched td.ex{font-weight:800;color:var(--navy)}
+.sched td.sel{text-align:left;font-size:.82rem}
+.sched td.sel b{display:block;margin-top:6px;color:var(--navy)}
+.sched td.sel b:first-child{margin-top:0}
+.sched td.sel ul{margin:2px 0 0 16px;padding:0}
+.sched td.sel small{display:block;margin-top:8px;color:var(--muted)}
+.sched tr.gs td{border-top:2px solid #cfd8ee}
+.sched time{white-space:nowrap}
