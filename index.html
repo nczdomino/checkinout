@@ -478,32 +478,28 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Thi đầu vào <span class="ja">/ 入学試験</span></span>
-      <h2 class="title">Hai hình thức thi, tùy trình độ tiếng Trung</h2>
+      <h2 class="title">Bạn sẽ thi gì? Tóm tắt 3 hình thức xét tuyển</h2>
+      <p class="lead">Mỗi hình thức có các phần thi khác nhau. Bấm vào thẻ để xem chi tiết và chọn đúng phần thi dành cho bạn.</p>
     </div>
-    <div class="grid-2">
-      <div class="card exam-card reveal">
-        <span class="tag">Chưa biết tiếng Trung</span>
-        <div class="ic">👶</div>
-        <h3>Thi dành cho người mới</h3>
-        <ul class="steps">
-          <li><div>Phỏng vấn<small>10 phút</small></div></li>
-          <li><div>Viết luận<small>60 phút · có thể thi bằng tiếng Việt</small></div></li>
-        </ul>
-      </div>
-      <div class="card exam-card reveal d1">
-        <span class="tag">Từ HSK4</span>
-        <div class="ic">👨‍🎓</div>
-        <h3>Thi dành cho người có tiếng Trung</h3>
-        <ul class="steps">
-          <li><div>Phỏng vấn<small>10 phút</small></div></li>
-          <li><div>Thi viết tiếng Trung<small>60 phút</small></div></li>
-        </ul>
-      </div>
+    <div class="grid-3 ex-cards">
+      <a class="card exq reveal" href="#xet-tuyen" data-open="a3" data-exm="gt" data-to="admTabs">
+        <span class="tag">Xét tuyển tổng hợp</span><div class="ic">🌟</div><h3>Hồ sơ + bài thi + phỏng vấn</h3>
+        <ul class="exq-list"><li>Xét hồ sơ</li><li>Viết luận hoặc thi viết</li><li>Phỏng vấn 10 phút</li><li>Cộng điểm tối đa 50</li></ul><span class="exq-go">Xem chi tiết ›</span>
+      </a>
+      <a class="card exq reveal d1" href="#xet-tuyen" data-open="a3" data-exm="tc" data-to="admTabs">
+        <span class="tag">Tiến cử của trường</span><div class="ic">🏫</div><h3>Hồ sơ + phỏng vấn</h3>
+        <ul class="exq-list"><li>Xét hồ sơ</li><li>Phỏng vấn 10 phút</li></ul><span class="exq-go">Xem chi tiết ›</span>
+      </a>
+      <a class="card exq reveal d2" href="#xet-tuyen" data-open="a3" data-exm="th" data-to="admTabs">
+        <span class="tag">Thi tuyển thông thường</span><div class="ic">✏️</div><h3>Hồ sơ + thi học lực 2 môn</h3>
+        <ul class="exq-list"><li>Xét hồ sơ</li><li>Thi 2 môn · 200 điểm</li></ul><span class="exq-go">Xem chi tiết ›</span>
+      </a>
     </div>
+    <div class="note green reveal" style="margin-top:20px"><span>✅</span><div>Biết hay chưa biết tiếng Trung không ảnh hưởng đến kết quả đậu rớt</div></div>
     <div class="note blue reveal"><span>🚀</span><div>Biết tiếng Trung có thể thi nhảy cấp để <b>học thẳng năm 2 hoặc năm 3</b> đại học.</div></div>
 
-
   </div>
+
 </section>
 
 <!-- ADMISSIONS 2027 -->
@@ -580,41 +576,85 @@
     </div>
 
     <div class="adm-panel" id="a3" style="margin-top:26px">
-      <div class="grid-2">
-        <div class="card type-card">
-          <div class="tagline">Xét tuyển tổng hợp</div>
-          <h3>📖 Có xét hồ sơ + bài thi + phỏng vấn</h3>
-          <div class="mini-title">Chưa học tiếng Trung</div>
-          <ul class="mini-list"><li>Xét hồ sơ</li><li>Viết luận 60 phút (600–800 chữ), chọn 1 trong 5 nhóm chủ đề</li><li>Phỏng vấn khoảng 10 phút (tự giới thiệu bằng tiếng Nhật)</li></ul>
-          <div class="chips light" style="margin-top:12px">
-            <span class="chip">Nhân lực toàn cầu</span><span class="chip">Xã hội, giáo dục, việc làm thời AI</span><span class="chip">Giáo dục ngoại ngữ</span><span class="chip">Đô thị quốc tế như Thâm Quyến</span><span class="chip">Đô thị đổi mới</span>
+      <p class="ex-intro">Chọn hình thức xét tuyển và cho biết bạn đã học tiếng Trung chưa, trang sẽ hiện đúng các phần thi dành cho bạn.</p>
+      <div class="card ex-ctrl" id="exCtrl">
+        <div class="ex-row">
+          <p class="ex-q">Bạn chọn hình thức nào?</p>
+          <div class="ex-methods" role="tablist">
+            <button type="button" role="tab" class="on" data-exm="gt"><span class="wi">🌟</span>Xét tuyển tổng hợp</button>
+            <button type="button" role="tab" data-exm="tc"><span class="wi">🏫</span>Tiến cử của trường</button>
+            <button type="button" role="tab" data-exm="th"><span class="wi">✏️</span>Thi tuyển thông thường</button>
           </div>
-          <div class="mini-title">Đã học tiếng Trung</div>
-          <ul class="mini-list"><li>Xét hồ sơ</li><li>Thi viết 60 phút: đọc hiểu và viết luận. <b>Miễn thi</b> nếu có HSK4 hoặc Trung kiểm (中検) 3 級</li><li>Phỏng vấn khoảng 10 phút (tự giới thiệu bằng tiếng Trung)</li></ul>
-          <div class="note" style="margin-top:16px"><span>➕</span><div>Được <b>cộng điểm (tối đa 50)</b> nếu có chứng chỉ (kiểm định chuyên ngành, Hán tự, Eiken…), báo cáo hoạt động nghiên cứu, hoạt động tình nguyện hoặc ngoại khóa.</div></div>
         </div>
+        <div class="ex-row" data-m="gt tc">
+          <p class="ex-q">Bạn đã học tiếng Trung chưa?</p>
+          <div class="who-sw ex-lv" role="tablist">
+            <button type="button" role="tab" class="on" data-exl="new"><span class="wi">🌱</span>Chưa học</button>
+            <button type="button" role="tab" data-exl="old"><span class="wi">🀄</span>Đã từng học</button>
+          </div>
+          <p class="ex-hint">Từ HSK4 trở lên thường được tính là đã học.</p>
+        </div>
+      </div>
 
-        <div style="display:grid;gap:20px;align-content:start">
-          <div class="card type-card">
-            <div class="tagline">Tiến cử của trường (chỉ định / công mộ)</div>
-            <h3>🏫 Xét hồ sơ + phỏng vấn</h3>
-            <ul class="mini-list"><li>Chưa học tiếng Trung: xét hồ sơ, phỏng vấn khoảng 10 phút (tiếng Nhật)</li><li>Đã học tiếng Trung: xét hồ sơ, phỏng vấn khoảng 10 phút (tiếng Trung). Từ HSK4 trở lên thường được tính là người đã học</li></ul>
-            <div class="mini-title">Điều kiện</div>
+      <div class="ex-result">
+        <h3 class="ex-h">Các phần thi của bạn</h3>
+        <ol class="ex-steps" data-m="gt" data-l="new"><li class="xs x-doc"><span class="xi">📄</span><div><b>Xét hồ sơ</b><small>Trường xem xét bộ hồ sơ bạn đã nộp.</small></div></li><li class="xs x-ess"><span class="xi">✍️</span><div><b>Viết luận</b><small>60 phút · 600–800 chữ · chọn 1 trong 5 chủ đề</small></div></li><li class="xs x-iv"><span class="xi">🎤</span><div><b>Phỏng vấn</b><small>Khoảng 10 phút · tự giới thiệu bằng tiếng Nhật và trả lời thêm vài câu hỏi</small></div></li></ol>
+        <ol class="ex-steps" data-m="gt" data-l="old"><li class="xs x-doc"><span class="xi">📄</span><div><b>Xét hồ sơ</b><small>Trường xem xét bộ hồ sơ bạn đã nộp.</small></div></li><li class="xs x-ess"><span class="xi">📝</span><div><b>Thi viết</b><small>60 phút · đọc hiểu và viết luận bằng tiếng Trung</small><em class="xb">Miễn nếu có HSK4 hoặc Trung kiểm (中検) 3 級</em></div></li><li class="xs x-iv"><span class="xi">🎤</span><div><b>Phỏng vấn</b><small>Khoảng 10 phút · tự giới thiệu bằng tiếng Trung và trả lời thêm vài câu hỏi</small></div></li></ol>
+        <ol class="ex-steps" data-m="tc" data-l="new"><li class="xs x-doc"><span class="xi">📄</span><div><b>Xét hồ sơ</b><small>Trường xem xét bộ hồ sơ bạn đã nộp.</small></div></li><li class="xs x-iv"><span class="xi">🎤</span><div><b>Phỏng vấn</b><small>Khoảng 10 phút · tự giới thiệu bằng tiếng Nhật và trả lời thêm vài câu hỏi</small></div></li></ol>
+        <ol class="ex-steps" data-m="tc" data-l="old"><li class="xs x-doc"><span class="xi">📄</span><div><b>Xét hồ sơ</b><small>Trường xem xét bộ hồ sơ bạn đã nộp.</small></div></li><li class="xs x-iv"><span class="xi">🎤</span><div><b>Phỏng vấn</b><small>Khoảng 10 phút · tự giới thiệu bằng tiếng Trung và trả lời thêm vài câu hỏi</small></div></li></ol>
+        <ol class="ex-steps" data-m="th"><li class="xs x-doc"><span class="xi">📄</span><div><b>Xét hồ sơ</b><small>Trường xem xét bộ hồ sơ bạn đã nộp.</small></div></li><li class="xs x-ac"><span class="xi">📚</span><div><b>Thi học lực</b><small>Chọn 2 trong 4 môn · mỗi môn 100 điểm · tổng 200 điểm</small></div></li></ol>
+        <div class="note green"><span>✅</span><div>Biết hay chưa biết tiếng Trung không ảnh hưởng đến kết quả đậu rớt</div></div>
+      </div>
+
+      <div class="ex-details">
+        <h3 class="ex-h">Chi tiết cần biết</h3>
+        <details class="ex-d" data-m="gt" data-l="new" open>
+          <summary>Chủ đề viết luận (chọn 1 trong 5)</summary>
+          <div class="ex-body"><div class="chips light" style="margin-top:12px">
+            <span class="chip">Nhân lực toàn cầu</span><span class="chip">Xã hội, giáo dục, việc làm thời AI</span><span class="chip">Giáo dục ngoại ngữ</span><span class="chip">Đô thị quốc tế như Thâm Quyến</span><span class="chip">Đô thị đổi mới</span>
+          </div><p class="ex-note">Tiêu chí chấm: tư duy, tính logic và khả năng diễn đạt.</p></div>
+        </details>
+        <details class="ex-d" data-m="gt">
+          <summary>Điểm cộng (tối đa 50 điểm)</summary>
+          <div class="ex-body">
+            <div class="table-card"><div class="table-scroll"><table class="ex-tbl">
+              <thead><tr><th>Nội dung được cộng điểm</th><th>Hồ sơ cần nộp</th></tr></thead>
+              <tbody>
+                <tr><td>Chứng chỉ (kiểm định chuyên ngành, Hán tự, Eiken…)</td><td>Giấy chứng nhận hoặc bản sao</td></tr>
+                <tr><td>Hoạt động nghiên cứu, tìm hiểu</td><td>Báo cáo đã có sẵn</td></tr>
+                <tr><td>Tình nguyện, hoạt động ngoại khóa</td><td>Báo cáo theo mẫu chỉ định</td></tr>
+              </tbody></table></div></div>
+            <p class="ex-note">Nộp qua bưu điện hoặc nộp dữ liệu. Riêng báo cáo tình nguyện/ngoại khóa nộp dữ liệu khi đăng ký Web.</p>
+          </div>
+        </details>
+        <details class="ex-d" data-m="tc" open>
+          <summary>Điều kiện</summary>
+          <div class="ex-body">
             <ul class="mini-list">
               <li>Có thư tiến cử của hiệu trưởng, trường là nguyện vọng 1 và cam kết nhập học nếu đỗ</li>
               <li>Dự kiến tốt nghiệp THPT tháng 3/2027</li>
               <li><b>Chỉ định:</b> điểm trung bình học tập từ <b>3.5</b> trở lên (sau cộng điểm), học tại trường được trường chỉ định</li>
               <li><b>Công mộ:</b> điểm trung bình từ <b>3.8</b> trở lên (sau cộng điểm)</li>
               <li>Có HSK4+, Trung kiểm 3 級+ hoặc Eiken 2 級+ được <b>cộng 0.2</b> vào điểm trung bình (chỉ cộng 1 mục)</li>
-            </ul>
+            </ul></div>
+        </details>
+        <details class="ex-d" data-m="th" open>
+          <summary>Môn thi học lực</summary>
+          <div class="ex-body">
+            <div class="table-card"><div class="table-scroll"><table class="ex-tbl">
+              <thead><tr><th>Môn</th><th>Nội dung / lựa chọn</th></tr></thead>
+              <tbody>
+                <tr><td>Ngữ văn tiếng Nhật</td><td>Văn hiện đại, cổ văn</td></tr>
+                <tr><td>Toán</td><td>Toán I, Toán A</td></tr>
+                <tr><td>Tin học</td><td>Tin học I</td></tr>
+                <tr><td>Ngoại ngữ</td><td>Tiếng Anh hoặc tiếng Trung</td></tr>
+              </tbody></table></div></div>
           </div>
-          <div class="card type-card">
-            <div class="tagline">Thi tuyển thông thường</div>
-            <h3>✏️ Xét hồ sơ + thi 2 môn</h3>
-            <p>Chọn 2 môn trong: Quốc ngữ (hiện đại, cổ văn), Toán (Toán I, A), Tin học I, Ngoại ngữ (Anh hoặc Trung). Mỗi môn 100 điểm, tổng 200 điểm.</p>
-            <ul class="mini-list"><li><b>Miễn môn ngoại ngữ</b> nếu có Eiken CSE 2100+, TOEFL iBT 60+, TOEIC 650+, HSK4 hoặc Trung kiểm 3 級</li><li>Biết hay chưa biết tiếng Trung không ảnh hưởng đến kết quả đậu rớt</li></ul>
-          </div>
-        </div>
+        </details>
+        <details class="ex-d" data-m="th">
+          <summary>Miễn môn ngoại ngữ nếu có một trong các chứng chỉ sau</summary>
+          <div class="ex-body"><div class="chips light"><span class="chip">Eiken CSE ≥ 2100</span><span class="chip">TOEFL iBT ≥ 60</span><span class="chip">TOEIC ≥ 650</span><span class="chip">HSK4</span><span class="chip">Trung kiểm (中検) 3 級</span></div></div>
+        </details>
       </div>
       <div class="note blue"><span>⏩</span><div>Người đã học tiếng Trung có thể được xét <b>chuyển tiếp hoặc nhảy cấp</b> tùy năng lực và kết quả thi. Hãy ghi rõ nguyện vọng trong form đăng ký online. Sau khi nhập học cần thi công nhận tín chỉ.</div></div>
     </div>

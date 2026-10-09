@@ -19,6 +19,18 @@
   function load(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch(e){return def;}}
   function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
   var state=load(DOC,{});
+  var EX='szu-ex', ex=load(EX,{m:'gt',l:'new'});
+  if(['gt','tc','th'].indexOf(ex.m)<0)ex.m='gt'; if(ex.l!=='new'&&ex.l!=='old')ex.l='new';
+  function applyEx(){
+    var root=document.getElementById('a3');if(!root)return;
+    var els=root.querySelectorAll('[data-m]');
+    for(var i=0;i<els.length;i++){
+      var ms=els[i].getAttribute('data-m').split(' '),l=els[i].getAttribute('data-l');
+      els[i].hidden=!(ms.indexOf(ex.m)>=0&&(!l||l===ex.l));
+    }
+    var bm=root.querySelectorAll('[data-exm]');for(var j=0;j<bm.length;j++){var on=bm[j].getAttribute('data-exm')===ex.m;bm[j].classList.toggle('on',on);bm[j].setAttribute('aria-selected',on);}
+    var bl=root.querySelectorAll('[data-exl]');for(var k=0;k<bl.length;k++){var o2=bl[k].getAttribute('data-exl')===ex.l;bl[k].classList.toggle('on',o2);bl[k].setAttribute('aria-selected',o2);}
+  }
 
   function setWho(w,persist){
     if(w!=='intl'&&w!=='hs')w='intl';
@@ -58,6 +70,10 @@
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt,done);});}else fallback(txt,done);
       return;
     }
+    var em=e.target.closest&&e.target.closest('[data-exm]');
+    if(em){ex.m=em.getAttribute('data-exm');save(EX,ex);applyEx();if(!em.hasAttribute('data-open'))return;}
+    var el=e.target.closest&&e.target.closest('[data-exl]');
+    if(el){ex.l=el.getAttribute('data-exl');save(EX,ex);applyEx();return;}
     var op=e.target.closest&&e.target.closest('[data-open]');
     if(op){
       e.preventDefault();
@@ -74,6 +90,6 @@
     try{document.execCommand('copy');cb();}catch(x){}document.body.removeChild(ta);
   }
   setWho(load(WHO,'intl'),false);
-  restore();copyLabel();
+  restore();copyLabel();applyEx();
   new MutationObserver(function(){progress();copyLabel();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
